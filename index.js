@@ -16,7 +16,7 @@ app.get("/almacen/:seccion", function (req, res) {
   if (almacen[seccion] !== undefined) {
     res.send(almacen[seccion]);
   } else {
-    res.send("El dato introducido no existe");
+    res.send({mensaje: "El dato introducido no existe"});
   }
 });
 
@@ -27,7 +27,6 @@ app.post("/almacen", function (req, res) {
   let img = req.body.img;
   let precio = req.body.precio;
   let producto = {
-    seccion: seccion,
     nombre: nombre,
     descripcion: descripcion,
     img: img,
@@ -38,7 +37,7 @@ app.post("/almacen", function (req, res) {
     almacen[seccion].push(producto);
     res.send(almacen);
   } else {
-    res.send("El dato introducido no existe");
+    res.send({mensaje: "El dato introducido no existe"});
   }
 });
 
@@ -64,7 +63,7 @@ app.put("/almacen", function (req, res) {
  if (boolean) {
      res.send(almacen)
  } else {
-  res.send("El dato introducido no existe");
+  res.send({mensaje: "El dato introducido no existe"});
 }
 })
 
